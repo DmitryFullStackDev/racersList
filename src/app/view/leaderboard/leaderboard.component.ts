@@ -66,6 +66,11 @@ export class LeaderboardComponent {
     }
 
     selectRacer(racerId: number) {
+        if (racerId === this.selectedRacerId()) {
+            this.selectedRacerId.set(null);
+            return
+        }
+
         this.selectedRacerId.set(racerId);
     }
 
