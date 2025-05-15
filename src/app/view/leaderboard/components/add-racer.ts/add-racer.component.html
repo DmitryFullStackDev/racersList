@@ -1,0 +1,55 @@
+<h3>Add New Racer</h3>
+<form (ngSubmit)="onSubmit()">
+    <label>
+        Name
+        <input
+                [(ngModel)]="name"
+                name="name"
+                placeholder="Enter racer's name"
+                [ngClass]="{ 'invalid': !nameValid }"
+                required
+        />
+    </label>
+
+    <label>
+        Time (in seconds)
+        <input
+                [(ngModel)]="time"
+                name="time"
+                type="number"
+                placeholder="e.g. 42.5"
+                [ngClass]="{ 'invalid': !timeValid }"
+                required
+        />
+    </label>
+
+    <label>
+        Speed
+        <input
+                [(ngModel)]="speed"
+                name="time"
+                type="number"
+                placeholder="e.g. 80"
+                [ngClass]="{ 'invalid': !speedValid }"
+                required
+        />
+    </label>
+
+    <label>
+        Color
+        <div class="color-picker">
+            <div
+                    *ngFor="let option of colorOptions"
+                    class="color-circle"
+                    [ngStyle]="{ 'background-color': option.css }"
+                    [class.selected]="selectedColor === option.value"
+                    [class.invalid]="!colorValid"
+                    (click)="selectColor(option.value)"
+                    [attr.aria-label]="option.label"
+                    [title]="option.label"
+            ></div>
+        </div>
+    </label>
+
+    <button class="contained-button" type="submit">Add Racer</button>
+</form>
